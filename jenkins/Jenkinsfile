@@ -5,6 +5,19 @@ pipeline {
         PATH="${M2_HOME}/bin:${PATH}"
     }
     stages {
+        stage('Checkup 1') {
+            sh 'pwd'
+            sh 'ls -l'
+        }
+        stage("Clean Up") {
+            steps {
+                deleteDir()
+            }
+        }
+        stage('Checkup 2') {
+            sh 'pwd'
+            sh 'ls -l'
+        }
         stage('Build') {
             steps {
                 sh 'mvn -B -DskipTests clean package'
